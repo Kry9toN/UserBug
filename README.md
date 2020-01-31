@@ -1,4 +1,4 @@
-![CheckBug](https://github.com/Kry9toN/Userbug/workflows/CheckBug/badge.svg?branch=ngebug)
+[![Build](https://github.com/Kry9toN/Userbug/workflows/CheckBug/badge.svg?branch=ngebug)](https://github.com/Kry9toN/Userbug/actions "Build")
 <h1 align="center">Project Userbug all</h1>
 <h3 align="center">A modular Telegram userbot running on Python 3.8+ with an sqlalchemy database.</h3>
 <h4 align="center">Based on RaphielGang's <a href="https://github.com/RaphielGang/Telegram-UserBot">Paperplane</a> Telegram userbot...</h4>
