@@ -64,7 +64,7 @@ async def sleepybot(time):
 @register(outgoing=True, pattern="^.shutdown$")
 async def killdabot(event):
     """ For .shutdown command, shut the bot down."""
-    await event.client.send_file(event.chat_id, SHUTDOWN)
+    await event.client.send_file(event.chat_id, SHUTDOWN, voice_note=True)
     if BOTLOG:
         await event.client.send_message(BOTLOG_CHATID, "#SHUTDOWN \n"
                                         "Bot shut down")
@@ -74,11 +74,11 @@ async def killdabot(event):
 @register(outgoing=True, pattern="^.restart$")
 async def killdabot(event):
     await event.edit("`*OTW mati urep Bosku*`")
-    await event.client.send_file(event.chat_id, SHUTDOWN)
+    await event.client.send_file(event.chat_id, SHUTDOWN, voice_note=True)
     if BOTLOG:
         await event.client.send_message(BOTLOG_CHATID, "#RESTART \n"
                                         "Bot Restarted")
-    await event.client.send_file(event.chat_id, STARTUP)
+    await event.client.send_file(event.chat_id, STARTUP, voice_note=True)
     await bot.disconnect()
     # Spin a new instance of bot
     execl(sys.executable, sys.executable, *sys.argv)
