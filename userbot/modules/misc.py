@@ -73,6 +73,7 @@ async def killdabot(event):
 
 @register(outgoing=True, pattern="^.restart$")
 async def killdabot(event):
+    await event.edit("`*OTW mati urep Bosku*`")
     await event.client.send_file(event.chat_id, SHUTDOWN)
     if BOTLOG:
         await event.client.send_message(BOTLOG_CHATID, "#RESTART \n"
