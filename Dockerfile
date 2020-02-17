@@ -10,10 +10,11 @@ RUN sed -e 's;^#http\(.*\)/edge/community;http\1/edge/community;g' -i /etc/apk/r
 # Installing Packages
 #
 RUN apk add --no-cache=true --update \
-        bash \
+    bash \
     build-base \
     bzip2-dev \
     curl \
+    coreutils \
     figlet \
     gcc \
     g++ \
