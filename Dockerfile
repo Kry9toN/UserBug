@@ -15,4 +15,8 @@ WORKDIR /root/userbot/
 #
 COPY ./sample_config.env ./userbot.session* ./config.env* /root/userbot/
 
+#
+# Install requirements
+#
+RUN pip3 install -r requirements.txt
 CMD ["python3","-m","userbot"]
