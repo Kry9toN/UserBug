@@ -30,19 +30,19 @@ async def fastpurger(purg):
                 await purg.client.delete_messages(chat, msgs)
                 msgs = []
     else:
-        await purg.edit("`I need a mesasge to start purging from.`")
-        return
+        return await purg.edit("`I need a mesasge to start purging from.`")
 
     if msgs:
         await purg.client.delete_messages(chat, msgs)
     done = await purg.client.send_message(
-        purg.chat_id, f"`Fast purge complete!`\
-        \nPurged {str(count)} messages")
-
+        purg.chat_id, "`Fast purge complete!`"
+        f"\nPurged {str(count)} messages")
+    '''
     if BOTLOG:
         await purg.client.send_message(
             BOTLOG_CHATID,
             "Purge of " + str(count) + " messages done successfully.")
+    '''
     await sleep(2)
     await done.delete()
 
@@ -65,10 +65,12 @@ async def purgeme(delme):
         delme.chat_id,
         "`Purge complete!` Purged " + str(count) + " messages.",
     )
+    '''
     if BOTLOG:
         await delme.client.send_message(
             BOTLOG_CHATID,
             "Purge of " + str(count) + " messages done successfully.")
+    '''
     await sleep(2)
     i = 1
     await smsg.delete()
@@ -82,13 +84,18 @@ async def delete_it(delme):
         try:
             await msg_src.delete()
             await delme.delete()
+            '''
             if BOTLOG:
                 await delme.client.send_message(
                     BOTLOG_CHATID, "Deletion of message was successful")
+            '''
         except rpcbaseerrors.BadRequestError:
+            await delme.edit("Well, I can't delete a message")
+            '''
             if BOTLOG:
                 await delme.client.send_message(
                     BOTLOG_CHATID, "Well, I can't delete a message")
+            '''
 
 
 @register(outgoing=True, pattern="^.edit")
@@ -105,9 +112,11 @@ async def editer(edit):
             await edit.delete()
             break
         i = i + 1
+    '''
     if BOTLOG:
         await edit.client.send_message(BOTLOG_CHATID,
                                        "Edit query was executed successfully")
+   '''
 
 
 @register(outgoing=True, pattern="^.sd")
@@ -120,35 +129,28 @@ async def selfdestruct(destroy):
     smsg = await destroy.client.send_message(destroy.chat_id, text)
     await sleep(counter)
     await smsg.delete()
+    '''
     if BOTLOG:
         await destroy.client.send_message(BOTLOG_CHATID,
                                           "sd query done successfully")
+    '''
 
 
 CMD_HELP.update({
-    'purge':
-    '.purge\
-        \nUsage: Purges all messages starting from the reply.'
-})
-
-CMD_HELP.update({
-    'purgeme':
-    '.purgeme <x>\
-        \nUsage: Deletes x amount of your latest messages.'
-})
-
-CMD_HELP.update({"del": ".del\
-\nUsage: Deletes the message you replied to."})
-
-CMD_HELP.update({
-    'edit':
-    ".edit <newmessage>\
-\nUsage: Replace your last message with <newmessage>."
-})
-
-CMD_HELP.update({
-    'sd':
-    '.sd <x> <message>\
-\nUsage: Creates a message that selfdestructs in x seconds.\
-\nKeep the seconds under 100 since it puts your bot to sleep.'
+    "purge":
+    ">`.purge`"
+    "\nUsage: Purges all messages starting from the reply.",
+    "purgeme":
+    ">`.purgeme <x>`"
+    "\nUsage: Deletes x amount of your latest messages.",
+    "del":
+    ">`.del`"
+    "\nUsage: Deletes the message you replied to.",
+    "edit":
+    ">`.edit <newmessage>`"
+    "\nUsage: Replace your last message with <newmessage>.",
+    "sd":
+    ">`.sd <x> <message>`"
+    "\nUsage: Creates a message that selfdestructs in x seconds."
+    "\nKeep the seconds under 100 since it puts your bot to sleep."
 })

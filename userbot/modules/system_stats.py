@@ -72,7 +72,7 @@ async def bot_ver(event):
                          "`")
     else:
         await event.edit(
-            "Shame that you don't have git, You're running 5.0 - 'Extended' anyway"
+            "Shame that you don't have git, You're running 9.0 - 'Extended' anyway"
         )
 
 
@@ -124,7 +124,9 @@ async def amireallyalive(alive):
     """ For !alive command, check if the bot is running.  """
     await alive.edit("`"
                      " \n"
+                     "================================ \n"
                      " • Bug is running cuk \n"
+                     "================================ \n"
                      f" ✓ Telethon version 📱: {version.__version__} \n"
                      f" ✓ Python 🐍: {python_version()} \n"
                      f" • User 😎: {DEFAULTUSER} \n"
@@ -136,7 +138,7 @@ async def amireallyalive(alive):
                      "██   ██▄ \n"
                      "▀▀    ▀▀ \n"
                      " \n"
-                 "`")    
+                 "`")
 
 
 
@@ -161,20 +163,21 @@ async def amireallyalivereset(ureset):
     await ureset.edit("`" "Successfully reset user for alive!" "`")
 
 
-CMD_HELP.update(
-    {"sysd": ".sysd\
-    \nUsage: Shows system information using neofetch."})
-CMD_HELP.update({"botver": ".botver\
-    \nUsage: Shows the userbot version."})
-CMD_HELP.update(
-    {"pip": ".pip <module(s)>\
-    \nUsage: Does a search of pip modules(s)."})
 CMD_HELP.update({
-    "on":
-    "!alive\
-    \nUsage: Type .on to see wether your bot is working or not.\
-    \n\n.aliveu <text>\
-    \nUsage: Changes the 'user' in alive to the text you want.\
-    \n\n.resetalive\
-    \nUsage: Resets the user to default."
+    "sysd":
+    ">`.sysd`"
+    "\nUsage: Shows system information using neofetch.",
+    "botver":
+    ">`.botver`"
+    "\nUsage: Shows the userbot version.",
+    "pip":
+    ">`.pip <module(s)>`"
+    "\nUsage: Does a search of pip modules(s).",
+    "alive":
+    ">`.alive`"
+    "\nUsage: Type .alive to see wether your bot is working or not."
+    "\n\n>`.aliveu <text>`"
+    "\nUsage: Changes the 'user' in alive to the text you want."
+    "\n\n>`.resetalive`"
+    "\nUsage: Resets the user to default."
 })
