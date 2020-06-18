@@ -38,7 +38,7 @@ async def sysdetails(sysd):
 
             await sysd.edit("`" + result + "`")
         except FileNotFoundError:
-            await sysd.edit("`Hella install neofetch first kthx`")
+            await sysd.edit("`Install neofetch first !!`")
 
 
 
@@ -78,11 +78,11 @@ async def bot_ver(event):
                              "` \n"
                              "`Revision: "
                              f"{revout}"
-                             "` \n"
-                             "`Tagged version: v0.1`")
+                             "`")
         else:
             await event.edit(
-                "Shame that you don't have Git, you're running v0.1 anyway!")
+                "Shame that you don't have git, you're running - 'v1.beta.4' anyway!"
+            )
 
 
 @register(outgoing=True, pattern="^.pip(?: |$)(.*)")
@@ -118,13 +118,13 @@ async def pipcheck(pip):
                     remove("output.txt")
                     return
                 await pip.edit("**Query: **\n`"
-                               f"{invokepip}"
+                               f"pip3 search {pipmodule}"
                                "`\n**Result: **\n`"
                                f"{pipout}"
                                "`")
             else:
                 await pip.edit("**Query: **\n`"
-                               f"{invokepip}"
+                               f"pip3 search {pipmodule}"
                                "`\n**Result: **\n`No Result Returned/False`")
         else:
             await pip.edit("`Use .help pip to see an example`")
