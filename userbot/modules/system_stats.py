@@ -20,7 +20,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 # ============================================
 
 
-@register(outgoing=True, pattern="^!sysd$")
+@register(outgoing=True, pattern="^.sysd$")
 async def sysdetails(sysd):
     """ For .sysd command, get system info using neofetch. """
     if not sysd.text[0].isalpha() and sysd.text[0] not in ("/", "#", "@", "!"):
@@ -43,7 +43,7 @@ async def sysdetails(sysd):
 
 
 
-@register(outgoing=True, pattern="^!botver$")
+@register(outgoing=True, pattern="^.botver$")
 async def bot_ver(event):
     """ For .botver command, get the bot version. """
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@",
@@ -130,30 +130,24 @@ async def pipcheck(pip):
             await pip.edit("`Use .help pip to see an example`")
 
 
-@register(outgoing=True, pattern="^!idup$")
+@register(outgoing=True, pattern="^.idup$")
 async def amireallyalive(alive):
     """ For !alive command, check if the bot is running.  """
     await alive.edit("`"
                      " \n"
                      "================================ \n"
-                     " • Bug is running cuk \n"
+                     " • Bot Service is running \n"
                      "================================ \n"
                      f" ✓ Telethon version 📱: {version.__version__} \n"
                      f" ✓ Python 🐍: {python_version()} \n"
                      f" • User 😎: {DEFAULTUSER} \n"
-                     "▄▄   ▄▄▄ \n"
-                     "██  ██▀ \n"
-                     "██▄██ \n"
-                     "█████ \n"
-                     "██  ██▄ \n"
-                     "██   ██▄ \n"
-                     "▀▀    ▀▀ \n"
+                     "================================ \n"
                      " \n"
                  "`")
 
 
 
-@register(outgoing=True, pattern="^!aliveu")
+@register(outgoing=True, pattern="^.aliveu")
 async def amireallyaliveuser(username):
     """ For !aliveu command, change the username in the !alive command. """
     message = username.text
@@ -166,7 +160,7 @@ async def amireallyaliveuser(username):
     await username.edit("`" f"{output}" "`")
 
 
-@register(outgoing=True, pattern="^!resetalive$")
+@register(outgoing=True, pattern="^.resetalive$")
 async def amireallyalivereset(ureset):
     """ For !resetalive command, reset the username in the !alive command. """
     global DEFAULTUSER
